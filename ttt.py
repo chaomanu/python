@@ -1,6 +1,6 @@
 beginner = input("Do you want to be the beginner? Yes or No?")
-yesses = ["Yes", "yes", "Y", "y", "Ya", "ya", "Yass", "yass"]
-noes = ["No", "no", "N", "n", "Nope", "nope", "Nah", "nah"]
+yesses = ["Yes", "yes", "Y", "y", "Ya", "ya", "Yass", "yass", " Yes", " yes"]
+noes = ["No", "no", "N", "n", "Nope", "nope", "Nah", "nah", " No", " no"]
 
 list = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
 
@@ -19,9 +19,9 @@ positions = {
 import random
 
 def printmatrix():
-    print(*list[7:10], sep = " ")
-    print(*list[4:7], sep = " ")
-    print(*list[1:4], sep = " ")
+    print("", *list[7:10],"", sep = "|")
+    print("", *list[4:7],"", sep = "|")
+    print("", *list[1:4],"", sep = "|")
 
 def wincondition():
         
