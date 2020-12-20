@@ -24,11 +24,16 @@ def printmatrix():
     print("", *list[1:4],"", sep = "|")
 
 def userinput():
+    try:
         x=int(input("Please input 1-9"))
         if x in list:    
             print("you draw x at " + str(x) + " " + positions[x])
             list[x] = "x"
             list.append("c")
+        else:
+            print("that...was not a valid input")
+    except ValueError:
+        print("that...was not a valid input")
 
 def wincondition():
     row1 = list[1:4]
