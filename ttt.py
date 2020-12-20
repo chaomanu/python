@@ -1,4 +1,4 @@
-beginner = input("Do you want to be the beginner? Yes or No?")
+beginner = input("Do you want to start? Yes or No?")
 yesses = ["Yes", "yes", "Y", "y", "Ya", "ya", "Yass", "yass", " Yes", " yes"]
 noes = ["No", "no", "N", "n", "Nope", "nope", "Nah", "nah", " No", " no"]
 
@@ -46,8 +46,11 @@ def losscondition():
             return False
 
 if beginner in yesses:
+    
+    printmatrix()
+    
     for number in list:    
-
+        
         x=int(input("Please input 1-9"))
         if x in list:    
             print("you draw x at " + str(x) + " " + positions[x])
