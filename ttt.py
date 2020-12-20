@@ -1,4 +1,4 @@
-beginner = input("Do you want to start? Yes or No?")
+starting = input("Do you want to start? Yes or No?")
 yesses = ["Yes", "yes", "Y", "y", "Ya", "ya", "Yass", "yass", " Yes", " yes"]
 noes = ["No", "no", "N", "n", "Nope", "nope", "Nah", "nah", " No", " no"]
 
@@ -23,6 +23,14 @@ def printmatrix():
     print("", *list[4:7],"", sep = "|")
     print("", *list[1:4],"", sep = "|")
 
+def userinput():
+        x=int(input("Please input 1-9"))
+        if x in list:    
+            print("you draw x at " + str(x) + " " + positions[x])
+            list[x] = "x"
+            list.append("c")
+
+
 def wincondition():
         
         if list[7] == "x" and list[8] == "x" and list[9] =="x" or list[4] == "x" and list[5] == "x" and list[6] =="x" or list[1] == "x" and list[2] == "x" and list[3] =="x":
@@ -45,17 +53,13 @@ def losscondition():
         else:
             return False
 
-if beginner in yesses:
+if starting in yesses:
     
     printmatrix()
     
     for number in list:    
         
-        x=int(input("Please input 1-9"))
-        if x in list:    
-            print("you draw x at " + str(x) + " " + positions[x])
-            list[x] = "x"
-            list.append("c")
+        userinput()
 
         if wincondition() == True:
             printmatrix()
@@ -83,7 +87,7 @@ if beginner in yesses:
 
     print("Game over")
 
-elif beginner in noes:
+elif starting in noes:
     for number in list:
 
         o = random.randint(1,9)
@@ -105,11 +109,7 @@ elif beginner in noes:
             print("No winner! (lame)")
             break
 
-        x=int(input("Please input 1-9"))
-        if x in list:    
-            print("you draw x at " + str(x) + " " + positions[x])
-            list[x] = "x"
-            list.append("c")
+        userinput()
 
         if wincondition() == True:
             printmatrix()
