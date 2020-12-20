@@ -1,2 +1,2 @@
 # python
-# I created a tic tac toe
+# I made a tic tac toe
