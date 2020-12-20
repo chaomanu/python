@@ -45,7 +45,6 @@ def losscondition():
         else:
             return False
 
-
 if beginner in yesses:
     for number in list:    
 
@@ -53,6 +52,7 @@ if beginner in yesses:
         if x in list:    
             print("you draw x at " + str(x) + " " + positions[x])
             list[x] = "x"
+            list.append("c")
 
         if wincondition() == True:
             printmatrix()
@@ -61,17 +61,24 @@ if beginner in yesses:
         
         o = random.randint(1,9)
         
-        while o not in list:
+        while o not in list and len(list) < 19:
             o = random.randint(1,9)
         if o in list:
             print("randobot draws o at " + str(o) + " " + positions[o])
             list[o] = "o"
+            list.append("c")
         
         printmatrix()
 
         if losscondition() == True:
             print("Oh no! You got owned by randobot!")
             break  
+
+        if len(list) > 18:
+            print("No winner! (lame)")
+            break
+
+    print("Game over")
 
 elif beginner in noes:
     for number in list:
@@ -83,6 +90,7 @@ elif beginner in noes:
         if o in list:
             print("randobot draws o at " + str(o) + " " + positions[o])
             list[o] = "o"
+            list.append("c")
 
         printmatrix()
 
@@ -90,16 +98,23 @@ elif beginner in noes:
             print("Oh no! You got owned by randobot!")
             break
 
+        if len(list) > 18:
+            print("No winner! (lame)")
+            break
+
         x=int(input("Please input 1-9"))
         if x in list:    
             print("you draw x at " + str(x) + " " + positions[x])
             list[x] = "x"
+            list.append("c")
 
         if wincondition() == True:
             printmatrix()
             print("You won! Suck it, randobot!")
             break
 
+    print("Game over")    
+
 else:
-    print("It was a simple yes or no question!")   
+    print("You failed to answer the yes or no question")   
 
