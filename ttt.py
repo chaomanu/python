@@ -30,17 +30,22 @@ def userinput():
             list[x] = "x"
             list.append("c")
 
-
 def wincondition():
+    row1 = list[1:4]
+    row2 = list[4:7]
+    row3 = list[7:10]
+    col1 = list[1:8:3]
+    col2 = list[2:9:3]
+    col3 = list[3:10:3]
+    dia1 = list[1:10:4]
+    dia2 = list[3:8:2]
         
-        if list[7] == "x" and list[8] == "x" and list[9] =="x" or list[4] == "x" and list[5] == "x" and list[6] =="x" or list[1] == "x" and list[2] == "x" and list[3] =="x":
-            return True
-        elif list[7] == "x" and list[4] == "x" and list[1] =="x" or list[8] == "x" and list[5] == "x" and list[2] =="x" or list[9] == "x" and list[6] == "x" and list[3] =="x":
-            return True
-        elif list[1] == "x" and list[5] == "x" and list[9] =="x" or list[7] == "x" and list[5] == "x" and list[3] =="x":
-            return True
-        else:
-            return False
+    if row1 == ["x","x","x"] or row2 == ["x","x","x"] or row3 == ["x","x","x"]:
+        return True
+    elif col1 == ["x","x","x"] or col2 == ["x","x","x"] or col3 == ["x","x","x"]:
+        return True
+    elif dia1 == ["x","x","x"] or dia2 == ["x","x","x"]:
+        return True
 
 def losscondition():
 
@@ -50,8 +55,6 @@ def losscondition():
             return True
         elif list[1] == "o" and list[5] == "o" and list[9] =="o" or list[7] == "o" and list[5] == "o" and list[3] =="o":
             return True
-        else:
-            return False
 
 if starting in yesses:
     
