@@ -1,4 +1,6 @@
 beginner = input("Do you want to be the beginner? Yes or No?")
+yesses = ["Yes", "yes", "Y", "y", "Ya", "ya", "Yass", "yass"]
+noes = ["No", "no", "N", "n", "Nope", "nope", "Nah", "nah"]
 
 list = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
 
@@ -44,7 +46,7 @@ def losscondition():
             return False
 
 
-if beginner == "Yes":
+if beginner in yesses:
     for number in list:    
 
         x=int(input("Please input 1-9"))
@@ -68,10 +70,10 @@ if beginner == "Yes":
         printmatrix()
 
         if losscondition() == True:
-            print("You got owned by randobot!")
+            print("Oh no! You got owned by randobot!")
             break  
 
-if beginner == "No":
+elif beginner in noes:
     for number in list:
 
         o = random.randint(1,9)
@@ -85,7 +87,7 @@ if beginner == "No":
         printmatrix()
 
         if losscondition() == True:
-            print("You got owned by randobot!")
+            print("Oh no! You got owned by randobot!")
             break
 
         x=int(input("Please input 1-9"))
@@ -97,5 +99,7 @@ if beginner == "No":
             printmatrix()
             print("You won! Suck it, randobot!")
             break
-        
+
+else:
+    print("It was a simple yes or no question!")   
 
