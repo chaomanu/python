@@ -1,8 +1,10 @@
-starter = input("Do you want to start? Yes or No? ")
+starter = input("Do you want to go first? Yes or No? ")
 yesses = ["Yes", "yes", "Y", "y", "Ya", "ya", "Yass", "yass", "1"]
 noes = ["No", "no", "N", "n", "Nope", "nope", "Nah", "nah", "2"]
+# determines who goes first - player or bot
 
 list = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+# number of fields, not scalable as of now
 
 positions = {
 1: "untenlinks",
@@ -15,15 +17,18 @@ positions = {
 8: "mitteoben",
 9: "rechtsoben"
 }
+# dictionary assigning names to the fields
 
 import random
 
 def printmatrix():
+    """prints the 3x3 matrix"""
     print("", *list[7:10],"", sep = "|")
     print("", *list[4:7],"", sep = "|")
     print("", *list[1:4],"", sep = "|")
 
 def userinput():
+    """ takes userinput 1-9, replaces that position in the list with "x", prints a message and adds "c" as a counter to the list """
     try:
         x=int(input("Please input 1-9: "))
         if x in list:    
@@ -37,13 +42,16 @@ def userinput():
         print("that...was not a valid input (not a number)")
 
 def boom():
+    """ easteregg win message if 2 lines are completed """
     print("BOOM!")
     print("tetris for jeff")
 
 def win():
+    """ win message """
     print("You won! Suck it, randobot!")
 
 def winboom():
+    "function that determines when easteregg win is triggered"
 
     row1 = list[1:4]
     row2 = list[4:7]
@@ -72,6 +80,7 @@ def winboom():
         return True
    
 def wincondition():
+    """ function that determines when win is triggered """
         
     row1 = list[1:4]
     row2 = list[4:7]
@@ -92,6 +101,7 @@ def wincondition():
         return True
     
 def losscondition():
+    """ function that determines when loss is triggered """
 
     row1 = list[1:4]
     row2 = list[4:7]
@@ -111,13 +121,21 @@ def losscondition():
     elif dia1 == trio or dia2 == trio:
         return True
 
+def neckandneck():
+
+
+# beginning of the game
+
 if starter in yesses:
+# if the player has first turn
 
     print("\n")
     printmatrix()
     print("\n")
+    # prints matrix
 
-    for number in list:    
+    for number in list:  
+    # for loop that first takes userinput, checks wincondition, takes botinput, prints matrix again, checks losscondition, checks if draw 
         
         userinput()
 
@@ -151,21 +169,22 @@ if starter in yesses:
         print("\n")
 
         if losscondition() == True:
-            print("\n")
             print("Oh no! You got owned by randobot!")
             break  
 
         if len(list) > 18:
-            print("\n")
-            print("No winner! (lame)")
-            
+            print("No winner! (lame)") 
             break
 
     print("Game over")
+    # prints Game over after loop break
 
 elif starter in noes:
+# if the bot has first turn
+
     print("\n")
     for number in list:
+    # for loop that takes botinput, prints matrix, checks losscondition, checks if draw, takes userinput, checks wincondition
 
         o = random.randint(1,9)
         
@@ -185,7 +204,6 @@ elif starter in noes:
             break
 
         if len(list) > 18:
-            print("\n")
             print("No winner! (lame)")
             break
 
@@ -211,3 +229,4 @@ elif starter in noes:
 
 else:
     print("You failed to answer the yes or no question")
+    # if the user didn't provide a yes no answer
