@@ -1,4 +1,4 @@
-starting = input("Do you want to start? Yes or No?")
+starter = input("Do you want to be the starter? Yes or No?")
 yesses = ["Yes", "yes", "Y", "y", "Ya", "ya", "Yass", "yass", " Yes", " yes"]
 noes = ["No", "no", "N", "n", "Nope", "nope", "Nah", "nah", " No", " no"]
 
@@ -36,6 +36,12 @@ def userinput():
     except ValueError:
         print("that...was not a valid input (not a number)")
 
+def boom():
+    """ easteregg """
+    print("BOOM tetris for jeff")
+
+
+
 def wincondition():
     row1 = list[1:4]
     row2 = list[4:7]
@@ -45,13 +51,40 @@ def wincondition():
     col3 = list[3:10:3]
     dia1 = list[1:10:4]
     dia2 = list[3:8:2]
-        
-    if row1 == ["x","x","x"] or row2 == ["x","x","x"] or row3 == ["x","x","x"]:
+
+    trix = ["x", "x", "x"]
+
+    #easteregg   
+    if (row1 == trix and col1 == trix) or (row2 == trix and col1 == trix) or (row3 == trix and col1 == trix):       
         return True
-    elif col1 == ["x","x","x"] or col2 == ["x","x","x"] or col3 == ["x","x","x"]:
+        boom()
+    elif (row1 == trix and col2 == trix) or (row2 == trix and col2 == trix) or (row3 == trix and col2 == trix):     
         return True
-    elif dia1 == ["x","x","x"] or dia2 == ["x","x","x"]:
+        boom()
+    elif (row1 == trix and col3 == trix) or (row2 == trix and col3 == trix) or (row3 == trix and col3 == trix):     
         return True
+        boom()
+    elif (dia1 == trix and row1 == trix) or (dia1 == trix and row2 == trix) or (dia1 == trix and row3 == trix):
+        return True  
+        boom() 
+    elif (dia2 == trix and row1 == trix) or (dia2 == trix and row2 == trix) or (dia2 == trix and row3 == trix):
+        return True 
+        boom()
+    elif (dia1 == trix and col1 == trix) or (dia1 == trix and col2 == trix) or (dia1 == trix and col3 == trix):
+        return True  
+        boom() 
+    elif (dia2 == trix and col1 == trix) or (dia2 == trix and col2 == trix) or (dia2 == trix and col3 == trix):
+        return True 
+        boom()
+    #easteregg
+
+    elif row1 == trix or row2 == trix or row3 == trix:
+        return True
+    elif col1 == trix or col2 == trix or col3 == trix:
+        return True
+    elif dia1 == trix or dia2 == trix:
+        return True
+    
 
 def losscondition():
 
@@ -62,7 +95,7 @@ def losscondition():
         elif list[1] == "o" and list[5] == "o" and list[9] =="o" or list[7] == "o" and list[5] == "o" and list[3] =="o":
             return True
 
-if starting in yesses:
+if starter in yesses:
     
     printmatrix()
     
@@ -96,7 +129,7 @@ if starting in yesses:
 
     print("Game over")
 
-elif starting in noes:
+elif starter in noes:
     for number in list:
 
         o = random.randint(1,9)
