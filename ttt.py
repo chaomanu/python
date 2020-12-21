@@ -31,9 +31,10 @@ def userinput():
             list[x] = "x"
             list.append("c")
         else:
-            print("that...was not a valid input")
+            print("that...was not a valid input (not available)")
+            
     except ValueError:
-        print("that...was not a valid input")
+        print("that...was not a valid input (not a number)")
 
 def wincondition():
     row1 = list[1:4]
