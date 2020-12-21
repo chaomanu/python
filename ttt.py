@@ -121,8 +121,8 @@ def losscondition():
     elif dia1 == trio or dia2 == trio:
         return True
 
-def neckandneck():
-
+#def neckandneck():
+# add draw easteregg here
 
 # beginning of the game
 
