@@ -1,6 +1,6 @@
 starter = input("Do you want to start? Yes or No? ")
-yesses = ["Yes", "yes", "Y", "y", "Ya", "ya", "Yass", "yass", " Yes",]
-noes = ["No", "no", "N", "n", "Nope", "nope", "Nah", "nah", " No"]
+yesses = ["Yes", "yes", "Y", "y", "Ya", "ya", "Yass", "yass", "1"]
+noes = ["No", "no", "N", "n", "Nope", "nope", "Nah", "nah", "2"]
 
 list = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
 
@@ -37,7 +37,9 @@ def userinput():
         print("that...was not a valid input (not a number)")
 
 def boom():
-    print("BOOM tetris for jeff")
+    print("BOOM!")
+    print("tetris for jeff")
+
 def win():
     print("You won! Suck it, randobot!")
 
@@ -91,29 +93,47 @@ def wincondition():
     
 def losscondition():
 
-        if list[7] == "o" and list[8] == "o" and list[9] =="o" or list[4] == "o" and list[5] == "o" and list[6] =="o" or list[1] == "o" and list[2] == "o" and list[3] =="o":
-            return True
-        elif list[7] == "o" and list[4] == "o" and list[1] =="o" or list[8] == "o" and list[5] == "o" and list[2] =="o" or list[9] == "o" and list[6] == "o" and list[3] =="o":
-            return True
-        elif list[1] == "o" and list[5] == "o" and list[9] =="o" or list[7] == "o" and list[5] == "o" and list[3] =="o":
-            return True
+    row1 = list[1:4]
+    row2 = list[4:7]
+    row3 = list[7:10]
+    col1 = list[1:8:3]
+    col2 = list[2:9:3]
+    col3 = list[3:10:3]
+    dia1 = list[1:10:4]
+    dia2 = list[3:8:2]
+
+    trio = ["o", "o", "o"]
+
+    if row1 == trio or row2 == trio or row3 == trio:
+        return True
+    elif col1 == trio or col2 == trio or col3 == trio:
+        return True
+    elif dia1 == trio or dia2 == trio:
+        return True
 
 if starter in yesses:
-    
+
+    print("\n")
     printmatrix()
-    
+    print("\n")
+
     for number in list:    
         
         userinput()
 
         if winboom() == True:
+            print("\n")
             printmatrix()
+            print("\n")
             boom()
+            print("\n")
             win()
             break
 
         elif wincondition() == True:
+            print("\n")
             printmatrix()
+            print("\n")
             win()
             break
         
@@ -125,20 +145,26 @@ if starter in yesses:
             print("randobot draws o at " + str(o) + " " + positions[o])
             list[o] = "o"
             list.append("c")
-        
+    
+        print("\n")
         printmatrix()
+        print("\n")
 
         if losscondition() == True:
+            print("\n")
             print("Oh no! You got owned by randobot!")
             break  
 
         if len(list) > 18:
+            print("\n")
             print("No winner! (lame)")
+            
             break
 
     print("Game over")
 
 elif starter in noes:
+    print("\n")
     for number in list:
 
         o = random.randint(1,9)
@@ -150,31 +176,38 @@ elif starter in noes:
             list[o] = "o"
             list.append("c")
 
+        print("\n")
         printmatrix()
+        print("\n")
 
         if losscondition() == True:
             print("Oh no! You got owned by randobot!")
             break
 
         if len(list) > 18:
+            print("\n")
             print("No winner! (lame)")
             break
 
         userinput()
 
         if winboom() == True:
+            print("\n")
             printmatrix()
+            print("\n")
             boom()
+            print("\n")
             win()
             break
 
         elif wincondition() == True:
+            print("\n")
             printmatrix()
+            print("\n")
             win()
             break
 
     print("Game over")    
 
 else:
-    print("You failed to answer the yes or no question")   
-
+    print("You failed to answer the yes or no question")
