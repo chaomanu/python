@@ -50,6 +50,22 @@ def win():
     """ win message """
     print("You won! Suck it, randobot!")
 
+# win and loss conditions start here
+
+def winpretty():
+    """ for the most beautiful wincondition"""
+
+    row2 = list[4:7]
+    col2 = list[2:9:3]
+
+    trix = ["x", "x", "x"] 
+    trio = ["o", "o", "o"]
+
+    if (row2 == trix and col2 == trix):
+        return True
+    elif (row2 == trio and col2 == trio):
+        return True
+
 def winboom():
     "function that determines when easteregg win is triggered"
 
@@ -121,8 +137,7 @@ def losscondition():
     elif dia1 == trio or dia2 == trio:
         return True
 
-#def neckandneck():
-# add draw easteregg here
+
 
 # beginning of the game
 
@@ -145,6 +160,9 @@ if starter in yesses:
             print("\n")
             boom()
             print("\n")
+            if winpretty() == True:
+                print("omg so pretty")
+                print("\n")
             win()
             break
 
@@ -169,6 +187,9 @@ if starter in yesses:
         print("\n")
 
         if losscondition() == True:
+            if winpretty() == True:
+                print("omg so pretty")
+                print("\n")
             print("Oh no! You got owned by randobot!")
             break  
 
@@ -200,6 +221,9 @@ elif starter in noes:
         print("\n")
 
         if losscondition() == True:
+            if winpretty() == True:
+                print("omg so pretty")
+                print("\n")
             print("Oh no! You got owned by randobot!")
             break
 
@@ -215,6 +239,9 @@ elif starter in noes:
             print("\n")
             boom()
             print("\n")
+            if winpretty() == True:
+                print("omg so pretty")
+                print("\n")
             win()
             break
 
