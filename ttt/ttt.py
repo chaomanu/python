@@ -41,14 +41,14 @@ def userinput():
     except ValueError:
         print("that...was not a valid input (not a number)")
 
-def boom():
-    """ easteregg win message if 2 lines are completed """
-    print("BOOM!")
-    print("tetris for jeff")
-
-def win():
-    """ win message """
-    print("You won! Suck it, randobot!")
+def botinput():
+    o = random.randint(1,9)
+    while o not in list and len(list) < 19:
+        o = random.randint(1,9)
+    if o in list:
+        print("randobot draws o at " + str(o) + " " + positions[o])
+        list[o] = "o"
+        list.append("c")      
 
 # win and loss conditions start here
 
@@ -142,7 +142,7 @@ def losscondition():
 # beginning of the game
 
 if starter in yesses:
-# if the player has first turn
+# if the player goes first
 
     print("\n")
     printmatrix()
@@ -158,29 +158,23 @@ if starter in yesses:
             print("\n")
             printmatrix()
             print("\n")
-            boom()
+            print("BOOM!")
+            print("tetris for jeff")
             print("\n")
             if winpretty() == True:
                 print("omg so pretty")
                 print("\n")
-            win()
+            print("You won! Suck it, randobot!")
             break
 
         elif wincondition() == True:
             print("\n")
             printmatrix()
             print("\n")
-            win()
-            break
+            print("You won! Suck it, randobot!")
+            break   
         
-        o = random.randint(1,9)
-        
-        while o not in list and len(list) < 19:
-            o = random.randint(1,9)
-        if o in list:
-            print("randobot draws o at " + str(o) + " " + positions[o])
-            list[o] = "o"
-            list.append("c")
+        botinput()
     
         print("\n")
         printmatrix()
@@ -201,20 +195,13 @@ if starter in yesses:
     # prints Game over after loop break
 
 elif starter in noes:
-# if the bot has first turn
+# if the bot goes first
 
     print("\n")
     for number in list:
     # for loop that takes botinput, prints matrix, checks losscondition, checks if draw, takes userinput, checks wincondition
-
-        o = random.randint(1,9)
         
-        while o not in list:
-            o = random.randint(1,9)
-        if o in list:
-            print("randobot draws o at " + str(o) + " " + positions[o])
-            list[o] = "o"
-            list.append("c")
+        botinput()
 
         print("\n")
         printmatrix()
@@ -237,19 +224,20 @@ elif starter in noes:
             print("\n")
             printmatrix()
             print("\n")
-            boom()
+            print("BOOM!")
+            print("tetris for jeff")
             print("\n")
             if winpretty() == True:
                 print("omg so pretty")
                 print("\n")
-            win()
+            print("You won! Suck it, randobot!")
             break
 
         elif wincondition() == True:
             print("\n")
             printmatrix()
             print("\n")
-            win()
+            print("You won! Suck it, randobot!")
             break
 
     print("Game over")    
