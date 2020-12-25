@@ -27,6 +27,16 @@ def printmatrix():
     print("", *list[4:7],"", sep = "|")
     print("", *list[1:4],"", sep = "|")
 
+def matrixdeko(printmatrix):
+    def wrap():
+        print("\n")
+        printmatrix()
+        print("\n")
+    return wrap
+
+dekomatrix = matrixdeko(printmatrix)
+
+
 def userinput():
     """ takes userinput 1-9, replaces that position in the list with "x", prints a message and adds "c" as a counter to the list """
     try:
@@ -144,9 +154,7 @@ def losscondition():
 if starter in yesses:
 # if the player goes first
 
-    print("\n")
-    printmatrix()
-    print("\n")
+    dekomatrix()
     # prints matrix
 
     for number in list:  
@@ -155,9 +163,7 @@ if starter in yesses:
         userinput()
 
         if winboom() == True:
-            print("\n")
-            printmatrix()
-            print("\n")
+            dekomatrix()
             print("BOOM!")
             print("tetris for jeff")
             print("\n")
@@ -168,17 +174,13 @@ if starter in yesses:
             break
 
         elif wincondition() == True:
-            print("\n")
-            printmatrix()
-            print("\n")
+            dekomatrix()
             print("You won! Suck it, randobot!")
             break   
         
         botinput()
     
-        print("\n")
-        printmatrix()
-        print("\n")
+        dekomatrix()
 
         if losscondition() == True:
             if winpretty() == True:
@@ -203,9 +205,7 @@ elif starter in noes:
         
         botinput()
 
-        print("\n")
-        printmatrix()
-        print("\n")
+        dekomatrix()
 
         if losscondition() == True:
             if winpretty() == True:
@@ -221,9 +221,7 @@ elif starter in noes:
         userinput()
 
         if winboom() == True:
-            print("\n")
-            printmatrix()
-            print("\n")
+            dekomatrix()
             print("BOOM!")
             print("tetris for jeff")
             print("\n")
@@ -234,9 +232,7 @@ elif starter in noes:
             break
 
         elif wincondition() == True:
-            print("\n")
-            printmatrix()
-            print("\n")
+            dekomatrix()
             print("You won! Suck it, randobot!")
             break
 
