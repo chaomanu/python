@@ -1,8 +1,3 @@
-starter = input("Do you want to go first? Yes or No? ")
-yesses = ["Yes", "yes", "Y", "y", "Ya", "ya", "Yass", "yass", "1"]
-noes = ["No", "no", "N", "n", "Nope", "nope", "Nah", "nah", "2"]
-# determines who goes first - player or bot
-
 list = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
 # number of fields, not scalable as of now
 
@@ -62,6 +57,17 @@ def botinput():
 
 # win and loss conditions start here
 
+#messages
+
+winboommsg = "BOOM!\ntetris for jeff\n"
+winprettymsg = "omg so pretty \n"
+winmsg = "You won! Suck it, randobot!"
+lossmsg = "Oh no! You got owned by randobot!"
+drawmsg = "No winner! (lame)"
+
+
+#functions
+
 def winpretty():
     """ for the most beautiful wincondition"""
 
@@ -104,6 +110,7 @@ def winboom():
         return True
     elif (dia2 == trix and col1 == trix) or (dia2 == trix and col2 == trix) or (dia2 == trix and col3 == trix):
         return True
+
    
 def wincondition():
     """ function that determines when win is triggered """
@@ -147,97 +154,59 @@ def losscondition():
     elif dia1 == trio or dia2 == trio:
         return True
 
+# game
 
+yesses = ["Yes", "yes", "Y", "y", "Ya", "ya", "Yass", "yass", "1"]
+noes = ["No", "no", "N", "n", "Nope", "nope", "Nah", "nah", "2"]
+startwords = yesses + noes
+# determines who goes first - player or bot
 
-# beginning of the game
+while True:
+    starter = input("Do you want to go first? Yes or No? ")
+    if starter not in startwords:
+        print("You failed to answer the yes/no question")
+    else:
+        break
 
-if starter in yesses:
-# if the player goes first
+print("Here we go!")
+
+def firstmove():
+    if starter in noes:
+        botinput()
+
+firstmove()
+
+dekomatrix()
+
+for number in list:   
+    
+    userinput()
+
+    if winboom() == True:
+        dekomatrix()
+        print(winboommsg)
+        if winpretty() == True:
+            print(winprettymsg)
+        print(winmsg)
+        break
+
+    elif wincondition() == True:
+        dekomatrix()
+        print(winmsg)
+        break   
+    
+    botinput()
 
     dekomatrix()
-    # prints matrix
 
-    for number in list:  
-    # for loop that first takes userinput, checks wincondition, takes botinput, prints matrix again, checks losscondition, checks if draw 
-        
-        userinput()
+    if losscondition() == True:
+        if winpretty() == True:
+            print(winprettymsg)
+        print(lossmsg)
+        break  
 
-        if winboom() == True:
-            dekomatrix()
-            print("BOOM!")
-            print("tetris for jeff")
-            print("\n")
-            if winpretty() == True:
-                print("omg so pretty")
-                print("\n")
-            print("You won! Suck it, randobot!")
-            break
+    if len(list) > 18:
+        print(drawmsg)
+        break
 
-        elif wincondition() == True:
-            dekomatrix()
-            print("You won! Suck it, randobot!")
-            break   
-        
-        botinput()
-    
-        dekomatrix()
-
-        if losscondition() == True:
-            if winpretty() == True:
-                print("omg so pretty")
-                print("\n")
-            print("Oh no! You got owned by randobot!")
-            break  
-
-        if len(list) > 18:
-            print("No winner! (lame)") 
-            break
-
-    print("Game over")
-    # prints Game over after loop break
-
-elif starter in noes:
-# if the bot goes first
-
-    print("\n")
-    for number in list:
-    # for loop that takes botinput, prints matrix, checks losscondition, checks if draw, takes userinput, checks wincondition
-        
-        botinput()
-
-        dekomatrix()
-
-        if losscondition() == True:
-            if winpretty() == True:
-                print("omg so pretty")
-                print("\n")
-            print("Oh no! You got owned by randobot!")
-            break
-
-        if len(list) > 18:
-            print("No winner! (lame)")
-            break
-
-        userinput()
-
-        if winboom() == True:
-            dekomatrix()
-            print("BOOM!")
-            print("tetris for jeff")
-            print("\n")
-            if winpretty() == True:
-                print("omg so pretty")
-                print("\n")
-            print("You won! Suck it, randobot!")
-            break
-
-        elif wincondition() == True:
-            dekomatrix()
-            print("You won! Suck it, randobot!")
-            break
-
-    print("Game over")    
-
-else:
-    print("You failed to answer the yes or no question")
-    # if the user didn't provide a yes no answer
+print("Game over")
