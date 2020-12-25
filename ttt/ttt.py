@@ -1,5 +1,5 @@
 list = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
-# number of fields, not scalable as of now
+# number of fields
 
 positions = {
 1: "untenlinks",
@@ -31,6 +31,7 @@ def matrixdeko(printmatrix):
 
 dekomatrix = matrixdeko(printmatrix)
 
+### inputs
 
 def userinput():
     """ takes userinput 1-9, replaces that position in the list with "x", prints a message and adds "c" as a counter to the list """
@@ -47,6 +48,7 @@ def userinput():
         print("that...was not a valid input (not a number)")
 
 def botinput():
+    """ let's the bot draw on a random field """
     o = random.randint(1,9)
     while o not in list and len(list) < 19:
         o = random.randint(1,9)
@@ -55,9 +57,8 @@ def botinput():
         list[o] = "o"
         list.append("c")      
 
-# win and loss conditions start here
 
-#messages
+### messages
 
 winboommsg = "BOOM!\ntetris for jeff\n"
 winprettymsg = "omg so pretty \n"
@@ -66,7 +67,7 @@ lossmsg = "Oh no! You got owned by randobot!"
 drawmsg = "No winner! (lame)"
 
 
-#functions
+### gameresults
 
 def winpretty():
     """ for the most beautiful wincondition"""
@@ -111,7 +112,6 @@ def winboom():
     elif (dia2 == trix and col1 == trix) or (dia2 == trix and col2 == trix) or (dia2 == trix and col3 == trix):
         return True
 
-   
 def wincondition():
     """ function that determines when win is triggered """
         
@@ -154,12 +154,12 @@ def losscondition():
     elif dia1 == trio or dia2 == trio:
         return True
 
-# game
+### game
 
 yesses = ["Yes", "yes", "Y", "y", "Ya", "ya", "Yass", "yass", "1"]
 noes = ["No", "no", "N", "n", "Nope", "nope", "Nah", "nah", "2"]
 startwords = yesses + noes
-# determines who goes first - player or bot
+
 
 while True:
     starter = input("Do you want to go first? Yes or No? ")
@@ -167,6 +167,8 @@ while True:
         print("You failed to answer the yes/no question")
     else:
         break
+# determines who goes first - player or bot
+
 
 print("Here we go!")
 
