@@ -40,23 +40,54 @@ print(field)
 
 row1 = list(range(1,s+1))
 
+"""
 # range linke seite für reihen
 print(1)
 print(1+s)
 print(1+(s*2))
-print(1+(s*3))
+# ...
 print("")
 
 # range rechte seite für reihen (plus 1)
 print(s)
 print((s*2))
 print((s*3))
-print((s*4))
+#...
 print("")
+
 
 print(list(range(1,(s+1))))
 print(list(range((s)+1,(s*2)+1)))
 print(list(range((s*2)+1,(s*3)+1)))
+"""
+
+print("#")
+
+def rowprinter():
+    x = 0
+    while x < r:
+        print(list(range(1+(x*s),(s+1+(x*s)))))
+        x += 1
+    
+rowprinter()
+
+print("#")
+
+fieldscalable = list(range(1, (s*r)+1))
+print(fieldscalable)
+
+print("| ", end="")
+for number in fieldscalable:
+    print(number,end=" | ")
+
+
+
+
+print("")
+print(r)
+print(c)
+print(f)
+
 
 """
 1 1+s
