@@ -1,2 +1,2 @@
 #trying
-this is where I try the things I have learned
+this is where I practice the things I have learned
