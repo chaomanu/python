@@ -52,7 +52,7 @@ print(numlist)
 numsum = reduce(lambda x,y: x+y, numlist, 0)
 print(numsum)
 
-
+print("let's print the sum of all the integer numbers from first to second number")
 n = int(input("first number "))
 m = int(input("second number "))
 
