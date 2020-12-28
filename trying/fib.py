@@ -16,5 +16,4 @@ def fib(n,x,y):
     else:
         fib(n,x,y)
     
-    
 fib(num,x,y)
