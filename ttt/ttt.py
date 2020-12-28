@@ -1,3 +1,5 @@
+import time
+
 list = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
 # number of fields
 
@@ -76,11 +78,8 @@ def winpretty():
     col2 = list[2:9:3]
 
     trix = ["x", "x", "x"] 
-    trio = ["o", "o", "o"]
 
     if (row2 == trix and col2 == trix):
-        return True
-    elif (row2 == trio and col2 == trio):
         return True
 
 def winboom():
@@ -154,7 +153,7 @@ def losscondition():
     elif dia1 == trio or dia2 == trio:
         return True
 
-### game
+
 
 yesses = ["Yes", "yes", "Y", "y", "Ya", "ya", "Yass", "yass", "1"]
 noes = ["No", "no", "N", "n", "Nope", "nope", "Nah", "nah", "2"]
@@ -169,46 +168,68 @@ while True:
         break
 # determines who goes first - player or bot
 
-
 print("Here we go!")
+
+### game
 
 def firstmove():
     if starter in noes:
         botinput()
 
-firstmove()
+while True:
 
-dekomatrix()
-
-for number in list:   
-    
-    userinput()
-
-    if winboom() == True:
-        dekomatrix()
-        print(winboommsg)
-        if winpretty() == True:
-            print(winprettymsg)
-        print(winmsg)
-        break
-
-    elif wincondition() == True:
-        dekomatrix()
-        print(winmsg)
-        break   
-    
-    botinput()
+    firstmove()
 
     dekomatrix()
 
-    if losscondition() == True:
-        if winpretty() == True:
-            print(winprettymsg)
-        print(lossmsg)
-        break  
+    for number in list:   
+        
+        userinput()
 
-    if len(list) > 18:
-        print(drawmsg)
-        break
+        if winboom() == True:
+            dekomatrix()
+            print(winboommsg)
+            if winpretty() == True:
+                print(winprettymsg)
+            print(winmsg)
+            break
 
-print("Game over")
+        elif wincondition() == True:
+            dekomatrix()
+            print(winmsg)
+            break   
+        
+        botinput()
+
+        dekomatrix()
+
+        if losscondition() == True:
+            if winpretty() == True:
+                print(winprettymsg)
+            print(lossmsg)
+            break  
+
+        if len(list) > 18:
+            print(drawmsg)
+            break
+
+    print("Game over")
+
+    yesses = ["Yes", "yes", "Y", "y", "Ya", "ya", "Yass", "yass", "1"]
+    noes = ["No", "no", "N", "n", "Nope", "nope", "Nah", "nah", "2"]
+    startwords = yesses + noes
+
+    while True:
+        playagain = str(input("Do you want to play again? "))
+        if playagain not in startwords:
+            print("You failed to answer the yes/no question")
+        elif playagain in startwords:
+            break
+
+    if playagain in yesses:
+            list = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+            continue
+    elif playagain in noes:
+            print("OK, bye-ee!")
+            time.sleep(5)
+            break
