@@ -62,7 +62,12 @@ print(min(morelist)) # min value
 print(morelist.count(3)) # counts numer of occurances
 morelist.reverse() # reverses list
 print(morelist) #prints reversed list
-
+enumerate(morelist)
+for item in enumerate(morelist):
+    print(item)
+str = "make a list from a string"
+strlist = str.split()
+print(strlist)
 
 
 ### tuples
@@ -129,6 +134,7 @@ print(numdict.get("tenth", "not in dict"))
 
 ### sets
 # sets cannot be indexed since they are unordered
+# sets store unique items, duplicates are removed
 
 print("\nsets:")
 emptyset = set()
