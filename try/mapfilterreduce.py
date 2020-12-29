@@ -24,7 +24,7 @@ print(tupleidentify)
 
 print("\n# filter function in use #\n")
 
-evennums = [i for i in range(101) if i % 2 == 0]
+evennums = [i for i in range(101) if i % 2 == 0] # list comprehensions let you create a list based on a simple rule
 print(evennums)
 
 def devideten(x):

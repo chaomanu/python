@@ -1,6 +1,6 @@
 from functools import reduce
 
-print("let's print a list of all numbers from first to second number")
+print("prints a list of all numbers from first to second number")
 n = int(input("first number "))
 m = int(input("second number "))
 print("\n")

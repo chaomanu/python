@@ -1,3 +1,6 @@
+# recursive functions
+# func is calling itself until a certain condition is fulfilled
+
 num = int(input("Input number: "))
 
 x = 0
