@@ -32,6 +32,8 @@ print(evennums)
 ### how about a function?
 #takes two numbers as input and outputs either all, even or odd numbers in that range (including both numbers)
 
+print("\nfunction\n")
+
 first =  int(input("first number: "))
 second = int(input("second number: ")) + 1
 
