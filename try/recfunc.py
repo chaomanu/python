@@ -1,5 +1,6 @@
 # recursive functions
-# func is calling itself until a certain condition is fulfilled
+# recursion means the function is calling itself
+# an explicit return statement immediately terminates a function execution and sends the return value back to the caller code
 
 num = int(input("Input number: "))
 
@@ -14,7 +15,7 @@ def fib(n,x,y):
 
     if n < 1:
         print("STOP")
-        return
+        return #returns None
 
     else:
         fib(n,x,y)
