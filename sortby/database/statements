@@ -1,0 +1,19 @@
+# create new table
+
+create table tablename(
+id int auto_increment primary key,
+name varchar(99),
+name varchar(99),
+...
+)
+
+
+# add a new column
+
+alter table tcmfoods
+add columnname varchar(99);
+
+
+# add items
+
+insert into tablename (columnname1, columnname2) values (value1, value2);
