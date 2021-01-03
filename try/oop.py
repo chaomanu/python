@@ -45,3 +45,24 @@ johnny.itis()
 print(johnny.name + "is" + johnny.feuerblumen)
 print("")
 
+# inheritance
+
+class superClass:
+    def __init__(self, attri, bute):
+        self.attri = attri
+        self.bute = bute
+
+class subClass(superClass):
+    def printing(self):
+        print("print something")
+
+first = superClass(1,2)
+second = subClass(3,4)
+
+print(first.attri)
+print(first.bute)
+print(second.attri)
+print(second.bute)
+
+second.printing()
+# first.printing() does not work
