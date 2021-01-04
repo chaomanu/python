@@ -1,28 +1,30 @@
 # it's getting harder
-# let's test some oop with classes
+# oop # classes
 
-"""
-the syntax for classes looks like this:
+# the syntax for classes looks like this:
 
 class Classname:
-    (class attribute = something                        # may assign an attribute to class that can be accessed from instances of the class or the class itself)
+    classattribute = "something"                    # may assign an attribute to class that can be accessed from an instances of the class or the class itself
 
-    def __init__ (self, attribute1, attribute2)         # [constructor] takes two arguments and assigns them to the attributes, self must always be the first parameter 
-        some code                                       # define the method
-        self.attribute1                                 # access attribute1
-        self.attribute2                                 # access attribute2
-        return if necessary                             # return statement
+    def __init__ (self, attribute1, attribute2):    # [constructor] takes two arguments and assigns them to the attributes, self must always be the first parameter 
+                                                    # __init__ = initializer
+        # some code                                 # define the method
+        self.attribute1 = attribute1                # access attribute1
+        self.attribute2 = attribute2                # access attribute2
+        return None                                 # return statement
 
-    more methods
+    # more methods
 
-variable = Classname(argument1, argument2)
-print(variable.attribute)
-etc.
-"""
+var = Classname("argument1", "argument2")
+print(var.attribute1, var.attribute2)
+print(var.classattribute)
+
+
+print("")
 
 class Simpleclass:
     feuerblumen = 'awesome'
-    def __init__ (self, name, mood):
+    def __init__ (self, name, mood):                    
         self.name = name
         self.mood = mood
    
@@ -56,13 +58,17 @@ class subClass(superClass):
     def printing(self):
         print("print something")
 
-first = superClass(1,2)
+first = superClass(1,2) # instance or  object - instance attributes (here 1,2) are unique to each object
 second = subClass(3,4)
+third = superClass(10,20)
 
 print(first.attri)
 print(first.bute)
+
 print(second.attri)
 print(second.bute)
+
+print(third.attri, third.bute)
 
 second.printing()
 # first.printing() does not work
