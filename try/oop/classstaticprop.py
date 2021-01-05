@@ -1,8 +1,12 @@
 # from sololearn
 # class methods, static methods, properties
 
-# classmethod
-# class methods are called by the class and then passed to cls (normally which is then passed to the self parameter of the method
+# classmethods
+# class methods are called by the class and then passed to cls
+# Methods of objects we've looked at so far are called by an instance of a class, which is then passed to the self parameter of the method.
+# Class methods are different - they are called by a class, which is passed to the cls parameter of the method.
+# A common use of these are factory methods, which instantiate an instance of a class, using different parameters than those usually passed to the class constructor.
+
 
 class Rectangle:
     def __init__(self, width, height):
@@ -12,7 +16,7 @@ class Rectangle:
     def calculate_area(self):
         return self.width * self.height
 
-    @classmethod
+    @classmethod # Class methods are marked with a classmethod decorator
     def new_square(cls, side_length):
         return cls(side_length, side_length)
 
@@ -28,7 +32,7 @@ class Calculator:
         self.value1 = value1
         self.value2 = value2
 
-    @staticmethod
+    @staticmethod # Static methods are marked with a staticmethod decorator
     def add(value1, value2):
         return value1 + value2
 
