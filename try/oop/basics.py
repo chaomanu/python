@@ -8,29 +8,45 @@ functional - pure functions, higher-order functions, recursions
 oop - objects
 
 """
-
-# the class describes what the object will be, but is separate from the object itself (like a blueprint)
 # syntax for classes:
 
 class Classname: 
-    classattribute = "something"                    # may assign an attribute to class that can be accessed from an instances of the class or the class itself
-                                                    #classes contain methods (functions)
-    def __init__ (self, attribute1, attribute2):    # [constructor] takes (itc) two arguments and assigns them to the attribute(s), self must always be the first parameter 
-                                                    # __init__ = initializer
+    classattribute = "classattribute"                # assigns attribute to class that can be accessed from an instances of the class or the class itself
+                                                    
+    def __init__ (self, attribute1, attribute2):    # __init__ method - creates an instance (object) of the class (using Classname as a function)
+                                                    #  takes (itc) two arguments and assigns them to the attribute(s), self must always be the first parameter  
+                                                    # attributes are accessed with self.attribute           
         self.attribute1 = attribute1                # sets initial value of attribute1 
         self.attribute2 = attribute2                # sets initial value of attribute2
+   
+    def anothermethod (self):                       # other methods (besides the __init__ method) can be added (all must have self as first parameter)
+        print("anothermethod")                      # can be accessed the same way as attributes with self.anothermethod() > () because it's a function not an attribute
 
-    # more methods if needed (must all have self as first parameter)
+    def usingclassattribute(self):                  # class accessing classattribute
+        return self.classattribute
 
-#CLASS - blueprint ↑
-# OBJECT - uses blueprint ↓
-
-var = Classname("argument1", "argument2")           # defines an object  
-var2 = Classname("argument3", "argument4")          # defines another object
+var = Classname("argument1", "argument2")           # uses the class (blueprint) to define an object and bind it to a variable
+var2 = Classname("argument3", "argument4")          # the same class (blueprint) can create different objects with different values
 
 # print
-print(var.attribute1, var.attribute2)
-print(var.classattribute)
+print(var.attribute1)
+print(var.attribute2)
+print(var2.attribute1)
+print(var2.attribute2)
+
+print(var.classattribute)                           # instance of the class accessing classattribute
+var.anothermethod()                                 # instance of the class accessing method anothermethod
+print(var.usingclassattribute())                    # instance of the class accessing method usingclassattribute
+
+# facts:
+# objects are created using classes
+# classes contain methods (which are functions) 
+# the class describes what the object will be, but is separate from the object itself (like a blueprint)
+# __init__ method = initializer = constructor > creates instance(object) of the class
+# instance = object
+# instances of a class have attributes, which are pieces of data associated with them
+# in an __init__ method, self.attribute can be used to set the initial value of an instance's attributes
+# within a method definition, self refers to the instance calling the method
 
 print("")
 

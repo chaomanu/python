@@ -1,6 +1,8 @@
 # from sololearn
+# class methods, static methods, properties
+
 # classmethod
-# class methods are called by the class and then passed to cls
+# class methods are called by the class and then passed to cls (normally which is then passed to the self parameter of the method
 
 class Rectangle:
     def __init__(self, width, height):
@@ -31,7 +33,22 @@ class Calculator:
         return value1 + value2
 
         
-n1 = int(input("first number: "))
-n2 = int(input("second number: "))
+n1 = int(1)
+n2 = int(1)
 
 print(Calculator.add(n1, n2))
+
+
+# properties
+# customizing access to instance attributes
+
+class Pizza:
+    def __init__(self, toppings):
+        self.toppings = toppings
+
+    @property
+    def pineapple_allowed(self):
+        return False
+
+pizza = Pizza(["cheese", "tomato"])
+print(pizza.pineapple_allowed)
