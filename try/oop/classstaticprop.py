@@ -45,14 +45,16 @@ print(Calculator.add(n1, n2))
 
 # properties
 # customizing access to instance attributes
+# one common use of a property is to make an attribute read-only
 
 class Pizza:
     def __init__(self, toppings):
         self.toppings = toppings
 
     @property
-    def pineapple_allowed(self):
+    def pineapple_allowed(self): #method pineapple_allowed
         return False
 
 pizza = Pizza(["cheese", "tomato"])
-print(pizza.pineapple_allowed)
+print(pizza.pineapple_allowed) # instance attribute pineapple_allowed is called > calls method pineapple_allowed
+# works without @property, if typed print(pizza.pineapple_allowed()) > normal function
