@@ -58,3 +58,51 @@ class Pizza:
 pizza = Pizza(["cheese", "tomato"])
 print(pizza.pineapple_allowed) # instance attribute pineapple_allowed is called > calls method pineapple_allowed
 # works without @property, if typed print(pizza.pineapple_allowed()) > normal function
+
+# properties can also be set by defining setter/getter functions
+# the setter function sets the corresponding property's value, the getter gets the value
+# @propertyname.setter @propertyname.getter
+
+class Pizza:
+    def __init__(self, toppings):
+        self.toppings = toppings
+        self._pineapple_allowed = False
+
+    @property
+    def pineapple_allowed(self):
+        return self._pineapple_allowed
+
+    @pineapple_allowed.setter
+    def pineapple_allowed(self, value):
+        if value:
+            password = input("Enter the password: ")
+            if password == "Sw0rdf1sh!":
+                self._pineapple_allowed = value
+            else:
+                raise ValueError("Alert! Intruder!")
+
+pizza = Pizza(["cheese", "tomato"])
+print(pizza.pineapple_allowed)
+pizza.pineapple_allowed = True
+print(pizza.pineapple_allowed)
+
+
+# from realpython
+
+class MyClass:
+    def method(self):
+        return 'instance method called', self
+
+    @classmethod
+    def classmethod(cls):
+        return 'class method called', cls
+
+    @staticmethod
+    def staticmethod():
+        return 'static method called'
+
+
+# Instance methods need a class instance and can access the instance through self.
+# Class methods don’t need a class instance. They can’t access the instance (self) but they have access to the class itself via cls.
+# Static methods don’t have access to cls or self. They work like regular functions but belong to the class’s namespace.
+# Static and class methods communicate and (to a certain degree) enforce developer intent about class design. This can have maintenance benefits.
