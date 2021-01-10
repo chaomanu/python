@@ -1,38 +1,101 @@
 import time
+import random
 
+# input for fieldsize
 while True:
     try:
-        size = int(input("choose size (number of fields per row/column): "))
+        s = int(input("choose size (number of fields per row/column): "))
+        if s <= 1:
+            print("please choose a higher number")
+            continue
         break
     except(ValueError):
         print("not a number")
 
-nums = range(0,size**2+1)
-list = [num for num in nums]
-print(list)
+# list for field
+field = [i for i in range(1,s*s+1)]
+print(field)
 
-# number of fields
+# rows, columns and diagonals for winconditions
 
-positions = {
-1: "untenlinks",
-2: "untenmitte",
-3: "untenrechts",
-4: "linksmitte",
-5: "mittemitte",
-6: "mitterechts",
-7: "linksoben",
-8: "mitteoben",
-9: "rechtsoben"
-}
-# dictionary assigning names to the fields
+rowlist=[]
+def rowprinter():
+    """ creates a list with all rows"""
+    x = 0
+    while x < s:
+        rows = (list(range(1+(x*s),(s+1+(x*s)))))
+        yield rows
+        x += 1
 
-import random
+for r in rowprinter():
+    rowlist.append(r)
+print(rowlist)
+
+columnlist=[]
+def columnprinter():
+    """creates a list with all columns"""
+    x = 0
+    while x < s:
+        columns = (list(range((1+x), (x + s*s), s)))
+        yield columns
+        x += 1
+
+for c in columnprinter():
+    columnlist.append(c)
+print(columnlist)
+
+diagonallist=[]
+def diagonalprinter():
+    """creates a list with all diagonals"""
+    x = 0
+    diagonal1 = list(range((1+x), (1+s*s), (s+1)))
+    diagonal2 = list(range(s, (s*s), (s-1)))
+    diagonallist.append(diagonal1)
+    diagonallist.append(diagonal2)
+
+diagonalprinter()
+print(diagonallist)
+
+# match for wincondition
+match = ["x" for i in range(s)]
+print(match)
+
+def userinput(x):
+    for n, num in enumerate(field):
+        if num == x:
+            field[n] = "x"
+    
+    for row in rowlist:
+        if x in row:
+            for n, num in enumerate(row):
+                if num == x:
+                    row[n] = "x"
+    return field, rowlist
+
+
+while True:
+    try:
+        x = int(input("number: "))
+        x in field
+        userinput(x)
+        print(field)
+        print(rowlist)
+        if all(type(i) is str for i in field):
+            print("Game over")
+            break
+
+    except(ValueError):
+        print("not a number!")
+        
+
+
+
+"""
 
 def printmatrix():
-    """prints the 3x3 matrix"""
-    print("", *list[7:10],"", sep = "|")
-    print("", *list[4:7],"", sep = "|")
-    print("", *list[1:4],"", sep = "|")
+    print("", *rowlist[2],"", sep = "|")
+    print("", *rowlist[1],"", sep = "|")
+    print("", *rowlist[0],"", sep = "|")
 
 def matrixdeko(printmatrix):
     def wrap():
@@ -46,7 +109,6 @@ dekomatrix = matrixdeko(printmatrix)
 ### inputs
 
 def userinput():
-    """ takes userinput 1-9, replaces that position in the list with "x", prints a message and adds "c" as a counter to the list """
     try:
         x=int(input("Please input 1-9: "))
         if x in list:    
@@ -60,7 +122,6 @@ def userinput():
         print("that...was not a valid input (not a number)")
 
 def botinput():
-    """ let's the bot draw on a random field """
     o = random.randint(1,9)
     while o not in list and len(list) < 19:
         o = random.randint(1,9)
@@ -82,7 +143,6 @@ drawmsg = "No winner! (lame)"
 ### gameresults
 
 def winpretty():
-    """ for the most beautiful wincondition"""
 
     row2 = list[4:7]
     col2 = list[2:9:3]
@@ -122,7 +182,6 @@ def winboom():
         return True
 
 def wincondition():
-    """ function that determines when win is triggered """
         
     row1 = list[1:4]
     row2 = list[4:7]
@@ -143,7 +202,6 @@ def wincondition():
         return True
     
 def losscondition():
-    """ function that determines when loss is triggered """
 
     row1 = list[1:4]
     row2 = list[4:7]
@@ -208,7 +266,7 @@ while True:
             dekomatrix()
             print(winmsg)
             break   
-        
+     
         botinput()
 
         dekomatrix()
@@ -219,9 +277,12 @@ while True:
             print(lossmsg)
             break  
 
+
         if len(list) > 18:
             print(drawmsg)
             break
+
+
 
     print("Game over")
 
@@ -237,9 +298,10 @@ while True:
             break
 
     if playagain in yesses:
-            list = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+            field = ["new field"]
             continue
     elif playagain in noes:
             print("OK, bye-ee!")
             time.sleep(5)
             break
+"""
