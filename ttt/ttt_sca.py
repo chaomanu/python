@@ -17,12 +17,10 @@ while True:
 
 # list for field
 field = [i for i in range(1,s*s+1)]
-print(field)
 
 # rows, columns and diagonals for winconditions
-
 rowlist=[]
-def rowprinter():
+def row():
     """ creates a list with all rows"""
     x = 0
     while x < s:
@@ -30,11 +28,11 @@ def rowprinter():
         yield rows
         x += 1
 
-for r in rowprinter():
+for r in row():
     rowlist.append(r)
 
-columnlist=[]
-def columnprinter():
+collist=[]
+def col():
     """creates a list with all columns"""
     x = 0
     while x < s:
@@ -42,23 +40,22 @@ def columnprinter():
         yield columns
         x += 1
 
-for c in columnprinter():
-    columnlist.append(c)
+for c in col():
+    collist.append(c)
 
-diagonallist=[]
-def diagonalprinter():
+dialist=[]
+def dia():
     """creates a list with all diagonals"""
     x = 0
     diagonal1 = list(range((1+x), (1+s*s), (s+1)))
     diagonal2 = list(range(s, (s*s), (s-1)))
-    diagonallist.append(diagonal1)
-    diagonallist.append(diagonal2)
+    dialist.append(diagonal1)
+    dialist.append(diagonal2)
 
-diagonalprinter()
+dia()
 
 # match for wincondition
 match = [" x" for i in range(s)]
-print(match)
 
 def userinput(x):
     """asks userinput until valid number"""
@@ -71,7 +68,21 @@ def userinput(x):
             for n, num in enumerate(row):
                 if num == x:
                     row[n] = " x"
-    return field, rowlist
+
+    for col in collist:
+        if x in col:
+            for n, num in enumerate(col):
+                if num == x:
+                    col[n] = " x"
+
+    for dia in dialist:
+        if x in dia:
+            for n, num in enumerate(dia):
+                if num == x:
+                    dia[n] = " x"
+
+    return field, rowlist, collist, dialist
+
 
 def botinput():
     o = random.randint(1,s*s)
@@ -88,11 +99,6 @@ def botinput():
                     if num == o:
                         row[n] = " o"
         return field, rowlist
-
-
-
-
-
 
 revfield = rowlist.reverse()
 
@@ -120,8 +126,10 @@ while True:
         printfield()
         print("Game over")
         break
+    elif match in rowlist:
+        print("AAAAAAAAAAAAHHHHHH!!!!!!! You won!")
+        break
     printfield()
-
        
     while True:
         try: 
@@ -139,7 +147,9 @@ while True:
     if all(type(i) is str for i in field):
         print("Game over")
         break
-
+    elif match in rowlist or match in collist or match in dialist:
+        print("AAAAAAAAAAAAHHHHHH!!!!!!! You won!")
+        break
 
 
 
