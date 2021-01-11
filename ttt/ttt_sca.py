@@ -192,22 +192,3 @@ print("shutting down in 2...")
 time.sleep(1)
 print("shutting down in 1...(bye!)")
 time.sleep(1)
-
-
-"""
-
-    while True:
-        playagain = str(input("Do you want to play again? "))
-        if playagain not in startwords:
-            print("You failed to answer the yes/no question")
-        elif playagain in startwords:
-            break
-
-    if playagain in yesses:
-            field = ["new field"]
-            continue
-    elif playagain in noes:
-            print("OK, bye-ee!")
-            time.sleep(5)
-            break
-"""
