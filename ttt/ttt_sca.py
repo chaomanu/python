@@ -132,22 +132,18 @@ def printfield():
         print("\n", end="")
     print("")
 
+# starter
+while True:
+    start = input("Do you want to go first? Yes or No? ")
+    chars = [c for c in start]
+    if chars[0] == "Y" or chars[0] == "y":
+        break
+    elif chars[0] == "N" or chars[0] == "n":
+        botinput()
+        break
 
 # game
-
 while True:
-    #botinput
-    botinput()
-
-    #losscondition
-    if fail in rowlist or fail in collist or fail in dialist:
-        printfield()
-        print("FUCK!!NO!! You lost!")
-        break
-    elif all(type(i) is str for i in field):
-        printfield()
-        print("Game over")
-        break
 
     #print field
     printfield()
@@ -173,6 +169,19 @@ while True:
         print("Game over")
         break
 
+    #botinput
+    botinput()
+
+    #losscondition
+    if fail in rowlist or fail in collist or fail in dialist:
+        printfield()
+        print("FUCK!!NO!! You lost!")
+        break
+    elif all(type(i) is str for i in field):
+        printfield()
+        print("Game over")
+        break
+
 print("shutting down in 5...")
 time.sleep(1)
 print("shutting down in 4...")
@@ -186,70 +195,6 @@ time.sleep(1)
 
 
 """
-yesses = ["Yes", "yes", "Y", "y", "Ya", "ya", "Yass", "yass", "1"]
-noes = ["No", "no", "N", "n", "Nope", "nope", "Nah", "nah", "2"]
-startwords = yesses + noes
-
-while True:
-    starter = input("Do you want to go first? Yes or No? ")
-    if starter not in startwords:
-        print("You failed to answer the yes/no question")
-    else:
-        break
-
-print("Here we go!")
-
-### game
-
-def firstmove():
-    if starter in noes:
-        botinput()
-
-while True:
-
-    firstmove()
-
-    dekomatrix()
-
-    for number in list:   
-        
-        userinput()
-
-        if winboom() == True:
-            dekomatrix()
-            print(winboommsg)
-            if winpretty() == True:
-                print(winprettymsg)
-            print(winmsg)
-            break
-
-        elif wincondition() == True:
-            dekomatrix()
-            print(winmsg)
-            break   
-     
-        botinput()
-
-        dekomatrix()
-
-        if losscondition() == True:
-            if winpretty() == True:
-                print(winprettymsg)
-            print(lossmsg)
-            break  
-
-
-        if len(list) > 18:
-            print(drawmsg)
-            break
-
-
-
-    print("Game over")
-
-    yesses = ["Yes", "yes", "Y", "y", "Ya", "ya", "Yass", "yass", "1"]
-    noes = ["No", "no", "N", "n", "Nope", "nope", "Nah", "nah", "2"]
-    startwords = yesses + noes
 
     while True:
         playagain = str(input("Do you want to play again? "))
