@@ -173,86 +173,22 @@ while True:
         print("Game over")
         break
 
-
+print("shutting down in 5...")
+time.sleep(1)
+print("shutting down in 4...")
+time.sleep(1)
+print("shutting down in 3...")
+time.sleep(1)
+print("shutting down in 2...")
+time.sleep(1)
+print("shutting down in 1...(bye!)")
+time.sleep(1)
 
 
 """
-
-
-def botinput():
-    o = random.randint(1,9)
-    while o not in list and len(list) < 19:
-        o = random.randint(1,9)
-    if o in list:
-        print("randobot draws o at " + str(o) + " " + positions[o])
-        list[o] = "o"
-        list.append("c")      
-
-### gameresults
-
-    trix = ["x", "x", "x"]
-    
-    if (row1 == trix and col1 == trix) or (row2 == trix and col1 == trix) or (row3 == trix and col1 == trix):       
-        return True
-    elif (row1 == trix and col2 == trix) or (row2 == trix and col2 == trix) or (row3 == trix and col2 == trix):        
-        return True
-    elif (row1 == trix and col3 == trix) or (row2 == trix and col3 == trix) or (row3 == trix and col3 == trix):     
-        return True
-    elif (dia1 == trix and row1 == trix) or (dia1 == trix and row2 == trix) or (dia1 == trix and row3 == trix):  
-        return True
-    elif (dia2 == trix and row1 == trix) or (dia2 == trix and row2 == trix) or (dia2 == trix and row3 == trix):
-        return True   
-    elif (dia1 == trix and col1 == trix) or (dia1 == trix and col2 == trix) or (dia1 == trix and col3 == trix):
-        return True
-    elif (dia2 == trix and col1 == trix) or (dia2 == trix and col2 == trix) or (dia2 == trix and col3 == trix):
-        return True
-
-def wincondition():
-        
-    row1 = list[1:4]
-    row2 = list[4:7]
-    row3 = list[7:10]
-    col1 = list[1:8:3]
-    col2 = list[2:9:3]
-    col3 = list[3:10:3]
-    dia1 = list[1:10:4]
-    dia2 = list[3:8:2]
-
-    trix = ["x", "x", "x"]
-
-    if row1 == trix or row2 == trix or row3 == trix:
-        return True
-    elif col1 == trix or col2 == trix or col3 == trix:
-        return True
-    elif dia1 == trix or dia2 == trix:
-        return True
-    
-def losscondition():
-
-    row1 = list[1:4]
-    row2 = list[4:7]
-    row3 = list[7:10]
-    col1 = list[1:8:3]
-    col2 = list[2:9:3]
-    col3 = list[3:10:3]
-    dia1 = list[1:10:4]
-    dia2 = list[3:8:2]
-
-    trio = ["o", "o", "o"]
-
-    if row1 == trio or row2 == trio or row3 == trio:
-        return True
-    elif col1 == trio or col2 == trio or col3 == trio:
-        return True
-    elif dia1 == trio or dia2 == trio:
-        return True
-
-
-
 yesses = ["Yes", "yes", "Y", "y", "Ya", "ya", "Yass", "yass", "1"]
 noes = ["No", "no", "N", "n", "Nope", "nope", "Nah", "nah", "2"]
 startwords = yesses + noes
-
 
 while True:
     starter = input("Do you want to go first? Yes or No? ")
@@ -260,7 +196,6 @@ while True:
         print("You failed to answer the yes/no question")
     else:
         break
-# determines who goes first - player or bot
 
 print("Here we go!")
 
