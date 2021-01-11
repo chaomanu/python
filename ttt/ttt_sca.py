@@ -145,7 +145,6 @@ while True:
 # game
 while True:
 
-    #print field
     printfield()
 
     #userinput   
@@ -154,7 +153,6 @@ while True:
             x = int(input("number: "))
             if x in field:
                 userinput(x)
-                printfield()
                 break
             else:
                 print("not available")
@@ -163,9 +161,11 @@ while True:
             print("not a number!")
 
     if match in rowlist or match in collist or match in dialist:
+        printfield()
         print("AAAAAAAAAAAAHHHHHH!!!!!!! You won!")
         break
     elif all(type(i) is str for i in field):
+        printfield()
         print("Game over")
         break
 
