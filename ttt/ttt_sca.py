@@ -54,11 +54,13 @@ def dia():
 
 dia()
 
-# match for wincondition
+# match for wincondition and losscondition
 match = [" x" for i in range(s)]
+fail = [" o" for i in range(s)]
 
+# userinput
 def userinput(x):
-    """asks userinput until valid number"""
+    """asks userinput until valid number and adds " x" to the field"""
     for n, num in enumerate(field):
         if num == x:
             field[n] = " x"
@@ -83,8 +85,9 @@ def userinput(x):
 
     return field, rowlist, collist, dialist
 
-
+# botinput
 def botinput():
+    """generates a random number in range and draws " o" on the field"""
     o = random.randint(1,s*s)
     while o not in field:
         o = random.randint(1,s*s)
@@ -98,10 +101,22 @@ def botinput():
                 for n, num in enumerate(row):
                     if num == o:
                         row[n] = " o"
-        return field, rowlist
 
+        for col in collist:
+            if o in col:
+                for n, num in enumerate(col):
+                    if num == o:
+                        col[n] = " o"
+
+        for dia in dialist:
+            if o in dia:
+                for n, num in enumerate(dia):
+                    if num == o:
+                        dia[n] = " o"
+        return field, rowlist, collist, dialist
+
+# print field
 revfield = rowlist.reverse()
-
 def printfield():
     """ prints the field """
     for row in rowlist:
@@ -121,18 +136,25 @@ def printfield():
 # game
 
 while True:
+    #botinput
     botinput()
-    if all(type(i) is str for i in field):
+
+    #losscondition
+    if fail in rowlist or fail in collist or fail in dialist:
+        printfield()
+        print("FUCK!!NO!! You lost!")
+        break
+    elif all(type(i) is str for i in field):
         printfield()
         print("Game over")
         break
-    elif match in rowlist:
-        print("AAAAAAAAAAAAHHHHHH!!!!!!! You won!")
-        break
+
+    #print field
     printfield()
-       
+
+    #userinput   
     while True:
-        try: 
+        try:
             x = int(input("number: "))
             if x in field:
                 userinput(x)
@@ -144,14 +166,12 @@ while True:
         except(ValueError):
             print("not a number!")
 
-    if all(type(i) is str for i in field):
-        print("Game over")
-        break
-    elif match in rowlist or match in collist or match in dialist:
+    if match in rowlist or match in collist or match in dialist:
         print("AAAAAAAAAAAAHHHHHH!!!!!!! You won!")
         break
-
-
+    elif all(type(i) is str for i in field):
+        print("Game over")
+        break
 
 
 
