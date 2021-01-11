@@ -8,6 +8,9 @@ while True:
         if s <= 1:
             print("please choose a higher number")
             continue
+        if s > 10:
+            print("that's a bit excessive, don't you think?")
+            continue
         break
     except(ValueError):
         print("not a number")
@@ -29,7 +32,6 @@ def rowprinter():
 
 for r in rowprinter():
     rowlist.append(r)
-print(rowlist)
 
 columnlist=[]
 def columnprinter():
@@ -42,7 +44,6 @@ def columnprinter():
 
 for c in columnprinter():
     columnlist.append(c)
-print(columnlist)
 
 diagonallist=[]
 def diagonalprinter():
@@ -54,72 +55,99 @@ def diagonalprinter():
     diagonallist.append(diagonal2)
 
 diagonalprinter()
-print(diagonallist)
 
 # match for wincondition
-match = ["x" for i in range(s)]
+match = [" x" for i in range(s)]
 print(match)
 
 def userinput(x):
+    """asks userinput until valid number"""
     for n, num in enumerate(field):
         if num == x:
-            field[n] = "x"
+            field[n] = " x"
     
     for row in rowlist:
         if x in row:
             for n, num in enumerate(row):
                 if num == x:
-                    row[n] = "x"
+                    row[n] = " x"
     return field, rowlist
 
+def botinput():
+    o = random.randint(1,s*s)
+    while o not in field:
+        o = random.randint(1,s*s)
+    if o in field:
+        for n, num in enumerate(field):
+            if num == o:
+                field[n] = " o"
+        
+        for row in rowlist:
+            if o in row:
+                for n, num in enumerate(row):
+                    if num == o:
+                        row[n] = " o"
+        return field, rowlist
+
+
+
+
+
+
+revfield = rowlist.reverse()
+
+def printfield():
+    """ prints the field """
+    for row in rowlist:
+        revfield
+        print("|", end="")
+        for nums in row:
+            if nums in range(1,10):
+                print(" ", end="")
+            if nums == 100:
+                    print("1X", end="|")
+            else:
+                print(nums, end="|")
+        print("\n", end="")
+    print("")
+
+
+# game
 
 while True:
-    try:
-        x = int(input("number: "))
-        x in field
-        userinput(x)
-        print(field)
-        print(rowlist)
-        if all(type(i) is str for i in field):
-            print("Game over")
-            break
+    botinput()
+    if all(type(i) is str for i in field):
+        printfield()
+        print("Game over")
+        break
+    printfield()
 
-    except(ValueError):
-        print("not a number!")
-        
+       
+    while True:
+        try: 
+            x = int(input("number: "))
+            if x in field:
+                userinput(x)
+                printfield()
+                break
+            else:
+                print("not available")
+
+        except(ValueError):
+            print("not a number!")
+
+    if all(type(i) is str for i in field):
+        print("Game over")
+        break
+
+
+
+
 
 
 
 """
 
-def printmatrix():
-    print("", *rowlist[2],"", sep = "|")
-    print("", *rowlist[1],"", sep = "|")
-    print("", *rowlist[0],"", sep = "|")
-
-def matrixdeko(printmatrix):
-    def wrap():
-        print("\n")
-        printmatrix()
-        print("\n")
-    return wrap
-
-dekomatrix = matrixdeko(printmatrix)
-
-### inputs
-
-def userinput():
-    try:
-        x=int(input("Please input 1-9: "))
-        if x in list:    
-            print("you draw x at " + str(x) + " " + positions[x])
-            list[x] = "x"
-            list.append("c")
-        else:
-            print("that...was not a valid input (not available)")
-            
-    except ValueError:
-        print("that...was not a valid input (not a number)")
 
 def botinput():
     o = random.randint(1,9)
@@ -130,39 +158,7 @@ def botinput():
         list[o] = "o"
         list.append("c")      
 
-
-### messages
-
-winboommsg = "BOOM!\ntetris for jeff\n"
-winprettymsg = "omg so pretty \n"
-winmsg = "You won! Suck it, randobot!"
-lossmsg = "Oh no! You got owned by randobot!"
-drawmsg = "No winner! (lame)"
-
-
 ### gameresults
-
-def winpretty():
-
-    row2 = list[4:7]
-    col2 = list[2:9:3]
-
-    trix = ["x", "x", "x"] 
-
-    if (row2 == trix and col2 == trix):
-        return True
-
-def winboom():
-    "function that determines when easteregg win is triggered"
-
-    row1 = list[1:4]
-    row2 = list[4:7]
-    row3 = list[7:10]
-    col1 = list[1:8:3]
-    col2 = list[2:9:3]
-    col3 = list[3:10:3]
-    dia1 = list[1:10:4]
-    dia2 = list[3:8:2]
 
     trix = ["x", "x", "x"]
     
