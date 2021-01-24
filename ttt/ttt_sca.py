@@ -62,7 +62,7 @@ fail = [" o" for i in range(s)]
 
 # userinput
 def userinput(x):
-    """asks userinput until valid number and adds " x" to the field"""
+    """after userinput adds " x" to the field (x is userinput)"""
     for n, num in enumerate(field):
         if num == x:
             field[n] = " x"
